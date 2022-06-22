@@ -25,12 +25,7 @@ jobs:
       - name: 💻 Install R packages and dependencies if needed
         run: |
           Rscript -e 'list.of.packages <- c("palmerpenguins", "dplyr", "ggplot2"); 
-          new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]; 
-          if(length(new.packages) > 0) {  
-          install.packages(new.packages, dependencies = TRUE)   
-          print(paste0("The following package was installed:", new.packages))} else 
-          if(length(new.packages) == 0) {
-          print("All packages have been previously installed and fetched from cache.")}'
+          install.packages(list.of.packages)'
       
       - name: Run my Rscript
         run: |
