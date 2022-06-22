@@ -39,6 +39,5 @@ jobs:
           git add --all
           git diff-index --quiet HEAD
           (git commit -a -m'[bot] update files' --allow-empty && git push -f)
-          git commit -am "update figure 1"
           git push 
       
