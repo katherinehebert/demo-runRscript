@@ -2,14 +2,9 @@
 
 ## Install and load libraries ----
 
-# we will use the Palmer Penguins dataset
-library(palmerpenguins)
-
-# to filter our data
-library(dplyr)
-
-# to plot
-library(ggplot2)
+library(palmerpenguins) # we will use the Palmer Penguins dataset
+library(dplyr) # to filter our data
+library(ggplot2) # to plot
 
 ## Plot a relationship =========================================================
 
@@ -21,6 +16,7 @@ ggplot(data = palmerpenguins::penguins,
   geom_point(aes(shape = species),
              size = 2,
              alpha = 0.2) +
+  # draw a linear model for each group (species)
   geom_smooth(method = "lm",
               se = FALSE) +
   theme_minimal() +
@@ -28,6 +24,7 @@ ggplot(data = palmerpenguins::penguins,
                                 "purple",
                                 "cyan4")
   ) +
+# specify titles for plot elements
   labs(title = "Penguin size, Palmer Station LTER",
        subtitle = "Flipper length and body mass for Adelie, Chinstrap and Gentoo Penguins",
        x = "Flipper length (mm)",
