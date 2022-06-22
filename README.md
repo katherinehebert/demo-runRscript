@@ -1,3 +1,11 @@
-# git_exercise
+# Demo: Running an R script with GitHub Actions
 
-Exercise 1 
+This is a demo repository to demonstrate a GitHub Actions workflow that runs an R script, and commits the resulting outputs to your GitHub repository. 
+
+This is example is part of [Workshop: Introduction to GitHub and GitHub Actions](https://github.com/pedrohbraga/IntroGitHubActions-Workshop), contributed to the 4th QCBS R Symposium on June 23rd, 2022. This workshop is contributed by Pedro Henrique P. Braga (Concordia University) & Katherine Hébert (Université de Sherbrooke).
+
+## GitHub Actions workflow
+
+See the Actions workflow [here](https://github.com/katherinehebert/git_exercise/blob/main/.github/workflows/run_Rscript.yml).
+
+[![run-Rscript](https://github.com/katherinehebert/git_exercise/actions/workflows/run_Rscript.yml/badge.svg)](https://github.com/katherinehebert/git_exercise/actions/workflows/run_Rscript.yml)
