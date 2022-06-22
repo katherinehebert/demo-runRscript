@@ -9,7 +9,6 @@ jobs:
   run-R-job:
     name: Run an R script to make a plot
     runs-on: ubuntu-latest
-    defaults:
     env:
       GITHUB_PAT: ${{ secrets.ACCESS_TOKEN }}
       ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}    
