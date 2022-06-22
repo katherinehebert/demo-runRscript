@@ -1,0 +1,50 @@
+on:
+  push:
+     branches:
+       - main
+
+name: run-Rscript
+
+jobs:
+  run-R-job:
+    name: Run an R script to make a plot
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: exercises/
+    env:
+      GITHUB_PAT: ${{ secrets.ACCESS_TOKEN }}
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}    
+        
+    steps:
+      - name: 🛎️ Checkout repository
+        uses: actions/checkout@v2
+
+      - name: 💻 Setup R
+        uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: latest
+          
+      - name: 💻 Install R packages and dependencies if needed
+        run: |
+          Rscript -e 'list.of.packages <- c("palmerpenguins", "dplyr", "ggplot2"); 
+          new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]; 
+          if(length(new.packages) > 0) {  
+          install.packages(new.packages, dependencies = TRUE)   
+          print(paste0("The following package was installed:", new.packages))} else 
+          if(length(new.packages) == 0) {
+          print("All packages have been previously installed and fetched from cache.")}'
+      
+      - name: Run my Rscript
+        run: |
+          source("scripts/make_fig1.R")
+        shell: Rscript {0} 
+      
+      - name: Commit the result of my R script
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add --all
+          git commit -am "update figure 1"
+          git push 
+      
