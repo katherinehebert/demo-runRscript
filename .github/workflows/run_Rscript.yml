@@ -1,6 +1,7 @@
 on:
   schedule:
     - cron: "0 0 * * *" # run every day at midnight
+  workflow_dispatch:
 
 name: run-Rscript
 
@@ -35,8 +36,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git add --all
-          git diff-index --quiet HEAD
-          (git commit -a -m'[bot] update files' --allow-empty && git push -f)
-          git push 
+          git add .
+          git commit -m "Results from R script" || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
       
